@@ -1,0 +1,21 @@
+line,label
+libname mylib 'C:\temp';,metadata
+data mylib.my_dataset;,metadata
+input id name $ age;,code
+datalines;,code
+1 John 25,code
+2 Jane 30,code
+;,code
+run;,metadata
+%macro sample_macro(param1);,metadata
+%let local_var = &param1;,metadata
+data temp_dataset;,metadata
+set sashelp.class;,code
+where age > 12;,code
+run;,metadata
+proc print data=temp_dataset;,code
+run;,code
+%mend sample_macro;,metadata
+proc freq data=sashelp.cars;,code
+tables origin;,code
+run;,code
